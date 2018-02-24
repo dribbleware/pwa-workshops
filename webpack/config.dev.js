@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const paths = require('./paths');
 
 module.exports = {
@@ -82,6 +83,9 @@ module.exports = {
       to: paths.build,
       ignore: ['index.html'],
     }]),
+    new ServiceWorkerWebpackPlugin({
+      entry: paths.worker
+    }),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {

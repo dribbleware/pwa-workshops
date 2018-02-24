@@ -6,6 +6,7 @@ const resolve = relativePath => path.resolve(cwd, relativePath);
 
 module.exports = {
   entryJs: resolve('src/index.js'),
+  worker: resolve('src/sw.js'),
   htmlTemplate: resolve('public/index.html'),
   scssResources: resolve('src/styles/resources.scss'),
   publicFiles: resolve('public'),
