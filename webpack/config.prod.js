@@ -4,6 +4,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin")
 
 const paths = require('./paths');
 
@@ -118,6 +120,17 @@ module.exports = {
       entry: paths.worker,
       excludes: ['_redirects'],
     }),
+    new ExtractTextWebpackPlugin('styles.css'),
+    new StyleExtHtmlWebpackPlugin({
+      position: 'head-bottom'
+    }),
     new webpack.optimize.UglifyJsPlugin(),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
+      threshold: 10240,
+      minRatio: 0.8,
+    })
   ],
 };
