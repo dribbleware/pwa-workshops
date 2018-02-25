@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-
+import {Helmet} from "react-helmet";
 import { shape, number, array, object } from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import StarsRating from '../StarsRating';
@@ -19,6 +19,16 @@ const ItemShow = ({ match, items, history }) => {
 
   return (
       <article className="ItemShow">
+        <Helmet
+          meta={[
+            { property: 'og:title', content: item.name },
+            { property: 'og:image', content: item.image_url },
+            { property: 'og:description', content: `${item.color}, ${item.region}, ${item.country}` },
+          ]}
+        >
+          <title>{item.name}</title>
+          <link rel="canonical" href="http://mysite.com/example" />
+        </Helmet>
         <Nav back title={item.name} annotation={`${item.color}, ${item.region}, ${item.country}`} />
         <div className="ItemShow__inner">
           <img
