@@ -1,0 +1,8 @@
+.offline {
+  filter: grayscale(1) blur(3px);
+  pointer-events: none;
+
+  h1, a, span {
+    color: grey;
+  }
+}

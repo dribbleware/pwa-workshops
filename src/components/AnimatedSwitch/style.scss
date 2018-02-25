@@ -1,0 +1,24 @@
+$anim-time: .25s;
+$anim-offset: 10px;
+
+.fade-enter {
+  opacity: 0;
+  transform: translateY($anim-offset);
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all $anim-time $anim-time ease;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transform: translateY($anim-offset);
+  transition: all $anim-time 0s ease;
+}
