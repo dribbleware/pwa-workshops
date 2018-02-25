@@ -6,6 +6,7 @@ import StarsRating from '../StarsRating';
 import BottleSvg from '../../svg-components/Bottle';
 import ItemDetail from '../ItemDetail';
 import Nav from '../Nav';
+import Picture from '../Picture';
 import './style.scss';
 
 const ItemShow = ({ match, items, history }) => {
@@ -34,7 +35,7 @@ const ItemShow = ({ match, items, history }) => {
 
             <div className="ItemShow__image-wrapper">
               {item.image_url ? (
-                <img className="ItemShow__image" src={item.image_url} alt="wine" />
+                <Picture className="ItemShow__image" src={item.image_url} alt="wine" />
               ) : (
                 <BottleSvg className="ItemShow__image" />
               )}
